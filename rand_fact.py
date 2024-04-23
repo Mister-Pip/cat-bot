@@ -14,5 +14,3 @@ def get_fact():
     result = response.json()["fact"]
 
     return result
-
-
