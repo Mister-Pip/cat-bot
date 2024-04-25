@@ -1,9 +1,9 @@
 import rand_fact, telebot, rand_img
-from some_API import TG_API
+from APIs import BOT_TOKEN
 from telebot import types
 
 
-bot = telebot.TeleBot(TG_API)
+bot = telebot.TeleBot(BOT_TOKEN)
 
 
 @bot.message_handler(commands=['start'])

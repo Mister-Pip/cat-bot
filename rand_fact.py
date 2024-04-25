@@ -1,5 +1,5 @@
 import requests
-from some_API import RAND_FACT_API
+from APIs import RAND_FACT_API
 
 url = "https://random-cat-fact.p.rapidapi.com/"
 
