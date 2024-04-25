@@ -10,7 +10,9 @@ headers = {
 
 
 def get_fact():
-    response = requests.get(url, headers=headers)
-    result = response.json()["fact"]
-
-    return result
+    try:
+        response = requests.get(url, headers=headers)
+        result = response.json()["fact"]
+        return result
+    except KeyError:
+        return 'Превышено допустимое количество запросов, попробуйте позже.'

@@ -28,5 +28,10 @@ def on_click(message):
         bot.register_next_step_handler(message, on_click)
 
 
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
+    bot.register_next_step_handler(message, on_click)
+
 bot.polling(none_stop=True)
 
