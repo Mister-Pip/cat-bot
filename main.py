@@ -17,6 +17,12 @@ def start_message(message):
     bot.register_next_step_handler(message, on_click)
 
 
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
+    bot.register_next_step_handler(message, on_click)
+
+
 def on_click(message):
     if message.text == 'Get some facts.':
         fact = rand_fact.get_fact()
@@ -27,11 +33,6 @@ def on_click(message):
         bot.send_photo(message.chat.id, pic)
         bot.register_next_step_handler(message, on_click)
 
-
-@bot.message_handler(func=lambda message: True)
-def echo_all(message):
-    bot.reply_to(message, message.text)
-    bot.register_next_step_handler(message, on_click)
 
 bot.polling(none_stop=True)
 
