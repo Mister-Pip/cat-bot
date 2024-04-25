@@ -6,6 +6,12 @@ from telebot import types
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
+    bot.register_next_step_handler(message, on_click)
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
 
@@ -14,12 +20,6 @@ def start_message(message):
     get_pic_btn = types.KeyboardButton('Get some pics.')
     markup.row(get_fact_btn, get_pic_btn)
     bot.send_message(message.chat.id, f"Hello, {message.from_user.first_name}!", reply_markup=markup)
-    bot.register_next_step_handler(message, on_click)
-
-
-@bot.message_handler(func=lambda message: True)
-def echo_all(message):
-    bot.reply_to(message, message.text)
     bot.register_next_step_handler(message, on_click)
 
 
